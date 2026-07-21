@@ -1,6 +1,6 @@
 
 
-# Microsoft Entra ID — Conditional Access Naming Convention
+# Microsoft Entra ID - Conditional Access Naming Convention
 
 A persona-based Conditional Access naming convention for Microsoft Entra ID, aligned to Microsoft's official CA planning guidance, and Claus Jespersen's widely referenced CA framework.
 
