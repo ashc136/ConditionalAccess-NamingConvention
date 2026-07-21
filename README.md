@@ -1,4 +1,4 @@
-# ConditionalAccess-NamingConvention
+
 
 # Microsoft Entra ID — Conditional Access Naming Convention
 
