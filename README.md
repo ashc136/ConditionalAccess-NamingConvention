@@ -39,7 +39,7 @@ Readable, but the freetext "When" clause diverges across admins over time. Also 
 
 **Option 2: Microsoft CAF architecture pattern**
 
-The Cloud Adoption Framework recommends a more structured token-based approach:
+The Cloud Adoption Framework recommends a more structured approach:
 ```
 CA{NNN}-{Persona}-{PolicyType}-{App}-{Platform}-{GrantControl}
 ```
