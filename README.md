@@ -10,6 +10,56 @@ A persona-based Conditional Access naming convention for Microsoft Entra ID, ali
 
 Conditional Access policies accumulate fast. Before long you end up with a mix of `CUSTOM-`, `OLD-`, `MFA-` and `BLOCK-` prefixes sitting alongside plain English names, all created at different points in time by different people. Without a naming convention you end up with multiple naming patterns which makes scanning the portal difficult. You have to click into every single policy just to understand what it does.
 
+When a user could not sign in, you open the Conditional Access blade and start scrolling, hoping the policy name gives you enough context to know if it is even relevant. Writing Sentinel KQL queries meant matching on partial strings and crossing your fingers nothing had changed. And when someone new joined the team, there was no handover document. Just a long conversation and a lot of tribal knowledge.
+
+---
+
+## The goal
+
+A good CA policy name should answer three questions without opening the policy:
+
+1. **Who** it applies to
+2. **What** it does
+3. **When** it applies (if a condition is the point)
+
+If you have to click into a policy to understand its purpose, the name has failed.
+
+---
+
+## What I considered
+
+I looked at three approaches before landing on a standard.
+
+**Option 1: Pure Microsoft Learn style**
+
+Microsoft's CA planning guidance recommends:
+```
+CA{NNN} - {Cloud app}: {Response} For {Principal} When {Conditions}
+```
+Readable, but the freetext "When" clause diverges across admins over time. Also puts the app first which means all your admin policies and staff policies get scattered when you sort alphabetically.
+
+**Option 2: Microsoft CAF architecture pattern**
+
+The Cloud Adoption Framework recommends a more structured token-based approach:
+```
+CA{NNN}-{Persona}-{PolicyType}-{App}-{Platform}-{GrantControl}
+```
+Excellent for machine readability and Sentinel filtering. Too long and hard to read at a glance in the portal, especially when troubleshooting at speed.
+
+**Option 3: Pure pipe-based readable format**
+
+Something like `CA-Block | Legacy Authentication` — clean and instantly readable. But no sequence number, no persona grouping, and freetext that diverges over time.
+
+---
+
+## What I landed on
+
+I combined the best of all three, drawing on:
+
+- **Microsoft's official CA naming guidance** — for the format structure
+- **Claus Jespersen's CA framework** (hosted under the Microsoft GitHub org at `github.com/microsoft/ConditionalAccessforZeroTrustResources`) — for the persona-based design and number ranges, which has become the de facto standard referenced by modern identity architects
+- **The pipe separator** — for readability in the Entra portal. Microsoft place no restriction on pipe, hyphen or underscore in CA policy display names
+
 ---
 
 ## Convention
@@ -50,7 +100,7 @@ Policies are grouped by identity type using number ranges. Related policies clus
 
 ## Examples
 
-| Old/Default name | New name |
+| Old (Default) | New |
 |---|---|
 | `Block legacy authentication` | `CA001-Block \| Legacy Authentication for All Identities` |
 | `Sign-in Risk Policy` | `CA005-Block \| High Risk Sign-ins for All Identities when Sign-in Risk High` |
@@ -65,10 +115,17 @@ Policies are grouped by identity type using number ranges. Related policies clus
 
 ---
 
-## Why the pipe separator
+## What the portal looks like after
 
-The pipe `|` character is not restricted in Entra CA policy display names. It provides a clean visual break in the portal between the sequence/action token and the readable description, making policies significantly easier to scan at a glance. 
+Sorting alphabetically gives you clean persona clusters:
 
+- `CA001` onwards — all Global baseline controls together
+- `CA101` onwards — all Admin policies together
+- `CA201` onwards — all Staff policies together
+- `CA401` onwards — Guest policies
+- `CA501` onwards — WorkloadIDs policies
+
+No more scrolling past `CUSTOM -` and `OLD -` prefixes mixed in with everything else. One glance and you know exactly what persona you are looking at and what the policy does.
 
 ---
 
@@ -78,5 +135,4 @@ The pipe `|` character is not restricted in Entra CA policy display names. It pr
 - [Microsoft CAF Conditional Access architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/security/conditional-access-framework)
 - [Claus Jespersen's CA framework for Zero Trust](https://github.com/microsoft/ConditionalAccessforZeroTrustResources)
 - [Alf Løkken — Building Scalable Conditional Access (2025)](https://medium.com/@alf.lokken/building-scalable-conditional-access-a-policy-framework-for-zero-trust-3ac87175274c)
-
 ---
