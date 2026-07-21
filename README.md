@@ -10,7 +10,6 @@ A persona-based Conditional Access naming convention for Microsoft Entra ID, ali
 
 Conditional Access policies accumulate fast. Before long you end up with a mix of `CUSTOM-`, `OLD-`, `MFA-` and `BLOCK-` prefixes sitting alongside plain English names, all created at different points in time by different people. Without a naming convention you end up with multiple naming patterns which makes scanning the portal difficult. You have to click into every single policy just to understand what it does.
 
-When a user could not sign in, you open the Conditional Access blade and start scrolling, hoping the policy name gives you enough context to know if it is even relevant. Writing Sentinel KQL queries meant matching on partial strings and crossing your fingers nothing had changed. And when someone new joined the team, there was no handover document. Just a long conversation and a lot of tribal knowledge.
 
 ---
 
