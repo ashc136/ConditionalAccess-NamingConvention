@@ -51,7 +51,7 @@ Policies are grouped by identity type using number ranges. Related policies clus
 
 ## Examples
 
-| Current name | Proposed name |
+| Old/Default name | New name |
 |---|---|
 | `Block legacy authentication` | `CA001-Block \| Legacy Authentication for All Identities` |
 | `Sign-in Risk Policy` | `CA005-Block \| High Risk Sign-ins for All Identities when Sign-in Risk High` |
@@ -68,17 +68,8 @@ Policies are grouped by identity type using number ranges. Related policies clus
 
 ## Why the pipe separator
 
-The pipe `|` character is not restricted in Entra CA policy display names. It provides a clean visual break in the portal between the sequence/action token and the readable description, making policies significantly easier to scan at a glance. It is also consistent with common security group naming conventions (`SG-Device | All Corporate Devices`).
+The pipe `|` character is not restricted in Entra CA policy display names. It provides a clean visual break in the portal between the sequence/action token and the readable description, making policies significantly easier to scan at a glance. 
 
----
-
-## Tips
-
-- **Update Sentinel KQL before renaming.** Filter on `ConditionalAccessPolicies[*].id` rather than display name. Policy IDs are stable across renames, display names are not.
-- **Rename via IaC not the portal.** Update `displayName` in your policy JSON, raise a PR and run through your pipeline.
-- **One persona group per change window.** Global first, then Admins, then Staff etc. Smaller blast radius if something goes wrong.
-- **Microsoft-created policies cannot be renamed.** Document their mapping in your register and move on.
-- **Remove `[Report-only]` suffix** when a policy is promoted to On.
 
 ---
 
