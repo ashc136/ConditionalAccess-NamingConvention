@@ -80,7 +80,9 @@ CA{NNN}-{Action} | {Scope} for {Persona} [when {Condition}]
 
 ## Persona number ranges
 
-Policies are grouped by identity type using number ranges. Related policies cluster together automatically when sorted in the Entra portal, and KQL queries in Sentinel can scope to a persona with a simple prefix match.
+Policies are grouped by identity type using number ranges. Related policies cluster together automatically when sorted in the Entra portal, and KQL queries in Sentinel can scope to a persona with a simple prefix match. 
+
+These ranges are a guide — you can adjust them, add more personas, or restructure the numbering to fit your organisation's needs.
 
 | Range | Persona | Who it covers |
 |---|---|---|
