@@ -112,7 +112,9 @@ These ranges are a guide — you can adjust them, add more personas, or restruct
 | `MFA for staff` | `CA201-Require \| MFA for Staff on All Apps` |
 | `Block access from unmanaged devices` | `CA204-Block \| Unmanaged Device Access for Staff on O365 [Report-only]` |
 | `MFA for Guests` | `CA401-Require \| MFA for Guests on All Apps` |
-| `CA - Block Risky Workload Identities` | `CA501-Block \| Risky Workload Identities` |
+| `Block high-risk agent identities` | `CA502-Block \| High Risk Agent Identities for WorkloadIDs` |
+| `Break glass location restriction` | `CA099-Block \| All Apps for Break Glass Accounts when Outside Trusted Locations` |
+| `Configure policy for autonomous agent access` | `CA503-Block \| All Agent Access for WorkloadIDs excl Approved Agents` |
 
 ---
 
