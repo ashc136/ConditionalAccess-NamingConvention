@@ -132,7 +132,7 @@ No more scrolling past `CUSTOM -` and `OLD -` prefixes mixed in with everything 
 
 ## References
 
-- [Microsoft CAF Conditional Access architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/security/conditional-access-framework)
+- [Microsoft Conditional Access architecture and Naming](https://learn.microsoft.com/en-us/azure/architecture/guide/security/conditional-access-framework)
 - [Claus Jespersen's CA framework for Zero Trust](https://github.com/microsoft/ConditionalAccessforZeroTrustResources/blob/main/ConditionalAccessGovernanceAndPrinciplesforZeroTrust%20October%202023.pdf)
 - [Alf Løkken — Building Scalable Conditional Access (2025)](https://medium.com/@alf.lokken/building-scalable-conditional-access-a-policy-framework-for-zero-trust-3ac87175274c)
 ---
